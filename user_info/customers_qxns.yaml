@@ -1,0 +1,27 @@
+questions:
+  - id: 1
+    key: _id
+    text: "unique user id?\n"
+    type: int
+
+  - id: 2
+    key: password
+    text: "password?\n"
+    type: str
+
+  - id: 3
+    key: name
+    text: "name?\n"
+    type: str
+
+  - id: 4
+    key: age
+    text: "age?\n"
+    type: str
+
+  - id: 5
+    key: v_crd
+    text: "x and y coordinate of vehicle in the format X,Y?\n"
+    type: tuple
+
+  
