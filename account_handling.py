@@ -1,58 +1,38 @@
-from home_screen import WelcomeScreen
 from pymongo import MongoClient
 import yaml
+import json 
 
 class Account:
     def __init__(self,type:str):
         """
         This is the account class. Handles login and account creation.
         """
-        assert type in ["driver","customer"], print("invalid type")
+        assert type in ["drivers","passengers"], print("invalid type")
 
         client = MongoClient("mongodb://localhost:27017") # type: ignore
         self.db = client["uber_clone"] # type: ignore
-        w = WelcomeScreen(type)
-        w.welcome_msg()
-        
-        if type == "driver": 
+
+        if type == "drivers": 
             self.userDb = self.db["drivers"]
         else:
-            self.userDb = self.db["customers"]
-  
-        #to create account or login
-        if w.option == w.create_account:
-            self.create_account()
-        elif w.option == w.login:
-            self.login()
-        else:
-            raise Exception("unexpected value of option recieved")
+            self.userDb = self.db["passengers"]
+
         self.user_doc = None
-    
-    def create_account(self):
+
+
+    def create_account(self, info: json):
         """
         This method is used to create account for the user.
         """
-
-        print("We are glad to see you here. It won't take more than a minute to onboard you.")
-
-        user_doc = self._info_seeker()
-        
         try:
-            self.userDb.insert_one(user_doc) # type: ignore
+            self.userDb.insert_one(info) 
         except:
-            print("id was already present. Over writting it.")
-            self.userDb.replace_one({"_id": user_doc["_id"]},user_doc) # type: ignoreuser_id},user_doc) #type: ignore
-
-        self.user_doc = user_doc
-        
+            self.userDb.replace_one({"_id":info["_id"]},info)    
+        self.user_doc = info 
         print("account created successfully. You can now login.\n\n\n")
-        self.login()
-
-        return None
+        
+        return "Account created successfully."
     
-    def _info_seeker(self):
-        """to be replaced by child method"""
-        return NotImplementedError
 
     def login(self):
         print("Welcome to login screen.")

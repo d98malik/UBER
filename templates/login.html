@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uber Clone Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black min-h-screen flex flex-col text-white">
+
+  <!-- Navbar -->
+  <nav class="bg-black p-4 shadow-md border-b border-gray-700 text-center">
+    <div class="text-xl font-semibold">Uber Clone Login</div>
+  </nav>
+
+  <!-- Login Form -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-sm mt-8">
+      <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+
+      <form class="space-y-4">
+        <input type="email" placeholder="Email" class="w-full bg-black text-white border border-gray-700 p-2 rounded-xl" required />
+        <input type="password" placeholder="Password" class="w-full bg-black text-white border border-gray-700 p-2 rounded-xl" required />
+        <button type="submit" class="w-full bg-white text-black p-2 rounded-xl hover:bg-gray-300">Login</button>
+      </form>
+
+      <p class="text-sm text-center mt-4">
+        New here?
+        <a href="/" class="text-blue-400 hover:underline">Create an Account</a>
+      </p>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uber Clone - Call Cab</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white h-screen w-screen flex">
+
+  <!-- Journey Input Box -->
+  <div class="bg-gray-900 p-6 rounded-xl shadow-lg w-80 space-y-4 m-6",style="height: 800px; position: relative;">
+    <h2 class="text-2xl font-semibold mb-2">Welcome! <br> </h2>
+    <h3>where do you want to travel today?<br><br><br><br> </h3>
+    <h2 class="text-2xl font-semibold mb-2">Book Your Ride</h2>
+    <div class="space-y-2">
+      <input
+        type="text"
+        placeholder="From"
+        class="w-full bg-black border border-gray-700 p-2 rounded-lg text-white placeholder-gray-400"
+      />
+    </div>
+
+    <div class="space-y-2">
+      <input
+        type="text"
+        placeholder="To"
+        class="w-full bg-black border border-gray-700 p-2 rounded-lg text-white placeholder-gray-400"
+      />
+    </div>
+
+    <button
+      class="w-full bg-white text-black p-2 rounded-lg font-semibold hover:bg-gray-200 transition"
+    >
+      Call Cab
+    </button>
+
+
+  </div>
+
+  <!-- Right Side White Space with 16 Numbered Squares -->
+  <div class="flex-grow bg-white rounded-xl relative" style="height: relative; position: relative;">
+    <script>
+      const container = document.currentScript.parentElement;
+      const cols = 5;
+      const rows = 5;
+      const total = 25;
+      const padding = 70;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const spacingX = width / (cols);
+      const spacingY = height / (rows);
+      const size = Math.min(spacingX, spacingY) * 0.3;
+
+      for (let i = 0; i < total; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const x = padding + col * spacingX - size / 2;
+        const y = padding + row * spacingY - size / 2;
+
+        const square = document.createElement("div");
+        square.style.position = "absolute";
+        square.style.width = `${size}px`;
+        square.style.height = `${size}px`;
+        square.style.left = `${x}px`;
+        square.style.top = `${y}px`;
+        square.style.backgroundColor = "#000";
+        square.style.borderRadius = "4px";
+        square.style.color = "#fff";
+        square.style.display = "flex";
+        square.style.alignItems = "center";
+        square.style.justifyContent = "center";
+        square.style.fontWeight = "bold";
+        square.innerText = i + 1;
+        container.appendChild(square);
+      }
+    </script>
+  </div>
+
+</body>
+</html>
